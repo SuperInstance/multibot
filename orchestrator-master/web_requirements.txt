@@ -1,0 +1,21 @@
+# Web Dashboard Requirements
+# FastAPI and dependencies
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+websockets==12.0
+python-multipart==0.0.6
+
+# Template engine
+jinja2==3.1.2
+
+# Async support
+asyncio-throttle==1.0.2
+
+# Existing orchestrator dependencies
+fastmcp>=1.0.0
+psutil>=5.9.0
+sqlite3  # Built-in with Python
+
+# Optional: for enhanced features
+aiofiles==23.2.1
+python-jose[cryptography]==3.3.0  # For authentication if needed

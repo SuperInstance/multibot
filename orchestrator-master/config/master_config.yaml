@@ -1,0 +1,97 @@
+# Master Orchestrator Configuration
+# This file configures the main orchestrator behavior and integrations
+
+orchestrator:
+  # Maximum number of concurrent workers
+  max_workers: 12
+
+  # Default model for new workers
+  default_worker_model: "sonnet-4"
+
+  # Model used by the master orchestrator
+  master_model: "opus-4"
+
+  # Worker timeout in seconds (1 hour)
+  worker_timeout: 3600
+
+  # Number of retry attempts for failed tasks
+  task_retry_attempts: 3
+
+  # Enable automatic scaling of workers based on load
+  auto_scale: true
+
+  # Heartbeat interval in seconds
+  heartbeat_interval: 30
+
+repository:
+  # Path to the main repository
+  path: "/path/to/your/repo"
+
+  # Main branch name
+  main_branch: "main"
+
+  # Prefix for worker branches
+  worker_branch_prefix: "worker-"
+
+  # Automatically commit worker changes
+  auto_commit: true
+
+  # Automatically push worker branches (use with caution)
+  auto_push: false
+
+  # Maximum age of worker branches in days before cleanup
+  max_branch_age_days: 30
+
+communication:
+  # Message queue type: "sqlite" or "redis"
+  message_queue: "sqlite"
+
+  # Heartbeat interval in seconds
+  heartbeat_interval: 30
+
+  # WebSocket port for MCP communication
+  websocket_port: 8765
+
+  # HTTP port for REST API and web dashboard
+  http_port: 8080
+
+  # Redis URL (only used if message_queue is "redis")
+  redis_url: "${REDIS_URL}"
+
+  # SQLite database path (only used if message_queue is "sqlite")
+  sqlite_path: "orchestrator.db"
+
+monitoring:
+  # Dashboard type: "gui" for desktop GUI or "web" for web interface
+  dashboard_type: "gui"
+
+  # Logging level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  log_level: "INFO"
+
+  # Log file path
+  log_file: "logs/orchestrator.log"
+
+  # Enable metrics collection
+  metrics_enabled: true
+
+  # Web dashboard port (if dashboard_type is "web")
+  web_dashboard_port: 8080
+
+  # GUI update interval in milliseconds (if dashboard_type is "gui")
+  gui_update_interval: 1000
+
+github:
+  # GitHub token for API access (set GITHUB_TOKEN environment variable)
+  token: "${GITHUB_TOKEN}"
+
+  # Repository URL for GitHub integration
+  repo_url: "${GITHUB_REPO_URL}"
+
+  # Webhook secret for GitHub webhooks (optional)
+  webhook_secret: "${GITHUB_WEBHOOK_SECRET}"
+
+  # Automatically create pull requests for completed work
+  auto_pr: false
+
+  # Pull request template file path (optional)
+  pr_template: null

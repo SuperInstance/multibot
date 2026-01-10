@@ -1,0 +1,54 @@
+# Worker Configuration Template
+# This template is used to generate individual worker configurations
+# Template variables (in curly braces) are replaced when creating workers
+
+worker:
+  # Worker unique identifier (replaced with actual worker ID)
+  id: "{worker_id}"
+
+  # Model to use for this worker (replaced with actual model)
+  model: "{model}"
+
+  # Working directory for this worker's git worktree
+  working_dir: "/workspace/workers/{worker_id}/worktree"
+
+  # Memory directory for this worker's context and knowledge
+  memory_dir: "/workspace/workers/{worker_id}/memory"
+
+  # Maximum number of concurrent tasks this worker can handle
+  max_concurrent_tasks: 1
+
+  # Task timeout in seconds (30 minutes)
+  task_timeout: 1800
+
+communication:
+  # Master orchestrator WebSocket endpoint
+  master_endpoint: "ws://localhost:8765"
+
+  # Send heartbeat messages to master
+  send_heartbeat: true
+
+  # Heartbeat interval in seconds
+  heartbeat_interval: 30
+
+  # Number of reconnection attempts if connection is lost
+  reconnect_attempts: 5
+
+  # Delay between reconnection attempts in seconds
+  reconnect_delay: 5
+
+memory:
+  # Token threshold for automatically saving conversation context
+  auto_save_threshold: 50000
+
+  # Number of tokens to retain in active context after saving
+  context_retention: 20000
+
+  # Memory cleanup interval in seconds (1 hour)
+  cleanup_interval: 3600
+
+  # Maximum memory usage in MB before cleanup
+  max_memory_size_mb: 1000
+
+  # Enable compression for stored memory files
+  compression_enabled: true
